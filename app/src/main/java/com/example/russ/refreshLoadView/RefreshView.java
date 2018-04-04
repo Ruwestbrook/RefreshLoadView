@@ -48,12 +48,8 @@ public class RefreshView extends View {
          paint.setStyle(Paint.Style.STROKE);
          paint.setColor(Color.parseColor("#E0E0E0"));
          canvas.drawLine(mWidth/2,0,mWidth/2,mHeight,paint);
-         canvas.drawLine(0,mHeight,mWidth,mHeight,paint);
          canvas.drawLine(mWidth/2,mHeight, (float) (mWidth/2-mHeight/4),2*mHeight/3,paint);
          canvas.drawLine(mWidth/2,mHeight, (float) (mWidth/2+mHeight/4),2*mHeight/3,paint);
-
-
-
-
     }
+
 }

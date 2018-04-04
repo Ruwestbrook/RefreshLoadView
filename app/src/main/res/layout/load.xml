@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="40dp">
+
+    <com.example.russ.refreshLoadView.RefreshView
+        android:layout_width="20dp"
+        android:id="@+id/pic"
+        android:layout_marginLeft="150dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="150dp" />
+    <TextView
+        android:gravity="center"
+        android:textSize="12sp"
+        android:text="@string/load"
+        android:id="@+id/text"  android:layout_width="wrap_content"
+
+        android:layout_height="40dp" />
+
+
+
+</LinearLayout>

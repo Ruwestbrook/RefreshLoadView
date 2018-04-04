@@ -18,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
       RefreshLoadView loadView=findViewById(R.id.recycler_view);
-      loadView.setAdapter(new MyAdapter());
+      loadView.setAdapter(new MyAdapter(true,true));
       loadView.setLayoutManager(new LinearLayoutManager(this));
 
     }
@@ -27,34 +27,38 @@ public class MainActivity extends AppCompatActivity {
 
     static class MyAdapter extends RefreshLoadView.Adapter<MyHolder>{
 
-        @NonNull
-        @Override
-        public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-            return new MyHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item,parent,false));
+        MyAdapter(boolean isRefresh, boolean isLoad) {
+            super(isRefresh, isLoad);
+        }
 
+        @Override
+        public int setCount() {
+            return 20;
+        }
+
+
+
+        @Override
+        public RecyclerView.ViewHolder createItemViewHolder(@NonNull ViewGroup parent, int viewType) {
+            return new MyHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item,parent,false));
         }
 
         @SuppressLint("SetTextI18n")
         @Override
-        public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
+        public void bindItemViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
                    TextView view= holder.itemView.findViewById(R.id.text);
                    view.setText("第"+position+"项");
-                   RefreshView refreshView=holder.itemView.findViewById(R.id.pic);
-                   if(position%2==0){
-                       refreshView.setRotation(180);
-                   }
-
         }
 
         @Override
-        public int getItemCount() {
-            return 10;
+        public int getViewType(int position) {
+            return super.getViewType(position);
         }
     }
 
     static class MyHolder extends RefreshLoadView.ViewHolder{
 
-        public MyHolder(View itemView) {
+        MyHolder(View itemView) {
             super(itemView);
         }
     }
